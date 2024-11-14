@@ -1,26 +1,15 @@
-window.onload = function() {
-    var search = document.querySelector("button");
-    var result = document.querySelector(".result");
-    var query = document.querySelector("input");
-    search.addEventListener('click', handleClick);
-    var httpRequest = new XMLHttpRequest();
-  
-    function handleClick(clickEvent) {
-      clickEvent.preventDefault();
-      var url = "superheroes.php?query=" + query.value;
-      httpRequest.onreadystatechange = fetchingdata;
-      httpRequest.open('GET', url, true);
-      httpRequest.send();
-    }
-    function fetchingdata() {
-      if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        if (httpRequest.status === 200) {
-          var response = httpRequest.responseText;
-          result.innerHTML = response;
-        }
-        else {
-          result.innerHTML = "Error: This resquest can not be deliver. Please try again.";
-        }
-      }
-    }
-  }
+document.getElementById("searchButton").addEventListener("click", function() {
+    fetch('superheroes.php')
+        .then(response => response.json())
+        .then(data => {
+            // Extract the aliases from the superhero data
+            const aliases = data.map(superhero => superhero.alias);
+            // Join aliases with newline characters for the alert
+            const aliasesList = aliases.join("\n");
+            // Display the list in an alert box
+            alert(aliasesList);
+        })
+        .catch(error => {
+            console.error("Error fetching superhero data:", error);
+        });
+});

@@ -1,35 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>   
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INFO2180 Lab 4</title>
+    <title>Avengers Character Search</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="app.js"></script>
-
-</head>  
-
+</head>
 <body>
-    <header>
-        <h1>AVENGERS CHARACTER SEARCH</h1>
-    </header>
-    <section class="SearchSuperhero">
-        <div class="container">
-            <p>Search by Full Name or Alias.</p>
-            <form action="#" method="post">
-                <div class="search-area">
-                    <input type="text" name="query" id="query" placeholder="e.g. Captain America or Steve Rodgers">
-                </div>
-                <button type="submit" class="btn">Search</button>
-            </form>
+    <div class="container">
+        <h1>Avengers Character Search</h1>
+        <button id="searchButton">Search</button>
+        <div id="resultsModal" class="modal">
+            <div class="modal-content">
+                <ul id="resultsList"></ul>
+                <button id="closeButton">OK</button>
+            </div>
         </div>
-    </section>
-    <section class="ResultDisplay">
-        <h2>RESULT</h2>
-            <hr>
-            <div class="result" id="result"></div>
-    </section>
-    <footer>
-        <img src="Avengers.webp" alt="Avengers ">
-    </footer>
+    </div>
+    <script src="app.js"></script>
 </body>
+</html>
